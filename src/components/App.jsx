@@ -16,63 +16,44 @@
 }; */
 
 import React, { useState } from 'react';
+import { ContactForm } from './ContactForm.jsx';
+import { ContactList } from './ContactList.jsx';
+import { Filter } from './Filter.jsx';
 
-export const App = () => {
-  const [state, setState] = useState({
-    contacts: [],
-    name: '',
-    number: ''
-  });
 
-  const handleChange = (e) => {
-    setState({ ...state, [e.target.name]: e.target.value });
+const App = () => {
+  const [contacts, setContacts] = useState([
+    { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+    { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+    { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+    { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+  ]);
+  const [filter, setFilter] = useState('');
+
+  const handleAddContact = (newContact) => {
+    setContacts([...contacts, newContact]);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (state.name.trim() === '' || state.number.trim() === '') return;
-    const newContact = {
-      id: Math.random().toString(36).substr(2, 9),
-      name: state.name,
-      number: state.number
-    };
-    setState({ ...state, contacts: [...state.contacts, newContact], name: '', number: '' });
+  const handleFilterChange = (event) => {
+    setFilter(event.target.value);
   };
+
+  const filteredContacts = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(filter.toLowerCase())
+  );
 
   return (
     <div>
       <h1>Phonebook</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="username"
-          id="username"
-          autocomplete="username"
-          value={state.name}
-          onChange={handleChange}
-          placeholder="Enter name"
-          required
-        />
-        <input
-          type="tel"
-          name="number"
-          value={state.number}
-          onChange={handleChange}
-          placeholder="Enter phone number"
-          required
-        />
-        <button type="submit">Add Contact</button>
-      </form>
+      <ContactForm onSubmit={handleAddContact} />
+
       <h2>Contacts</h2>
-      <ul>
-        {state.contacts.map((contact) => (
-          <li key={contact.id}>
-            {contact.name} - {contact.number}
-          </li>
-        ))}
-      </ul>
+      <Filter value={filter} onChange={handleFilterChange} />
+      <ContactList contacts={filteredContacts} />
     </div>
   );
 };
 
 export default App;
+
+
