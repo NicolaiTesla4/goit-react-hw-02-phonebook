@@ -15,10 +15,10 @@
   );
 }; */
 
-import React, { useState } from 'react';
-import { ContactForm } from './ContactForm.jsx';
-import { ContactList } from './ContactList.jsx';
-import { Filter } from './Filter.jsx';
+/* import React, { useState } from 'react';
+import ContactForm from './ContactForm.jsx';
+import ContactList from './ContactList.jsx';
+import Filter from './Filter.jsx';
 
 
 const App = () => {
@@ -54,6 +54,45 @@ const App = () => {
   );
 };
 
+export default App; */
+
+import React, { useState } from 'react';
+import ContactForm from './ContactForm.jsx';
+import ContactList from './ContactList.jsx';
+import Filter from './Filter.jsx';
+
+const App = () => {
+  const [contacts, setContacts] = useState([]);
+  const [filter, setFilter] = useState('');
+
+  const addContact = (newContact) => {
+    setContacts(prevContacts => [...prevContacts, newContact]);
+  };
+
+  const handleFilterChange = (event) => {
+    setFilter(event.target.value);
+  };
+
+  const deleteContact = (contactId) => {
+    setContacts(prevContacts => prevContacts.filter(contact => contact.id !== contactId));
+  };
+
+  return (
+    <div>
+      <h1>Phonebook</h1>
+      <ContactForm contacts={contacts} onSubmit={addContact} />
+      
+      <h2>Contacts</h2>
+      <ContactList contacts={contacts} onDeleteContact={deleteContact} />
+      <Filter value={filter} onChange={handleFilterChange} />
+    </div>
+  );
+};
+
 export default App;
+
+
+
+
 
 
