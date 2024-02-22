@@ -29,18 +29,18 @@ const ContactForm = ({ contacts, onSubmit }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="name">Contact Name:</label>
+      <label htmlFor="contactName">Name:</label>
       <input
         type="text"
-        id="name"
-        name="name"
+        id="contactName"
+        name="contactName"
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
         title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan."
         required
         value={name}
         onChange={handleNameChange}
       />
-      <label htmlFor="number">Phone Number:</label>
+      <label htmlFor="number">Number:</label>
       <input
         type="tel"
         id="number"
