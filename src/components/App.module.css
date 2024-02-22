@@ -3,15 +3,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    font-size: 40px;
-    color: #010101;
-    padding: 20px;
+    font-size: 20px;
+    padding: 10px;
 }
 
 .container h1 {
-    font-size: 60px;
-}
-
-.container h2 {
-    font-size: 30px;
+    font-size: 40px;
+    margin-top: 10px;
 }

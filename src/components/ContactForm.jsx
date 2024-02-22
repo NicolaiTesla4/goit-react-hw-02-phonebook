@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
+import css from './ContactForm.module.css';
 
 const ContactForm = ({ contacts, onSubmit }) => {
   const [name, setName] = useState('');
@@ -28,11 +29,11 @@ const ContactForm = ({ contacts, onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="contactName">Name:</label>
+    <form onSubmit={handleSubmit} className={css.form}>
+      <label htmlFor="1" className={css.label}>Name:</label>
       <input
         type="text"
-        id="contactName"
+        id="1"
         name="contactName"
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
         title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan."
@@ -40,10 +41,10 @@ const ContactForm = ({ contacts, onSubmit }) => {
         value={name}
         onChange={handleNameChange}
       />
-      <label htmlFor="number">Number:</label>
+      <label htmlFor="2" className={css.label}>Number:</label>
       <input
         type="tel"
-        id="number"
+        id="2"
         name="number"
         pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
         title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
@@ -51,7 +52,7 @@ const ContactForm = ({ contacts, onSubmit }) => {
         value={number}
         onChange={handleNumberChange}
       />
-      <button type="submit">Add Contact</button>
+      <button type="submit" className={css.button}>Add Contact</button>
     </form>
   );
 };

@@ -1,20 +1,3 @@
-/* export const App = () => {
-  return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
-  );
-}; */
-
 import React, { useState } from 'react';
 import ContactForm from './ContactForm.jsx';
 import ContactList from './ContactList.jsx';
@@ -22,7 +5,7 @@ import Filter from './Filter.jsx';
 import css from './App.module.css';
 
 const App = () => {
-  const [contacts, setContacts] = useState([
+  const [contacts, setContacts] = useState([ 
     { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
     { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
     { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
