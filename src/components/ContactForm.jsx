@@ -61,7 +61,7 @@ class ContactForm extends React.Component {
           type="tel"
           id="2"
           name="number"
-          pattern="[\(]?[\+]?(\d{2}|\d{3})[\)]?[\s]?((\d{6}|\d{8})|(\d{3}[\*\.\-]){2}\d{3}|(\d{2}[\*\.\-\s]){3}\d{2}|(\d{4}[\*\.\-\s]){1}\d{4})|\d{8}|\d{10}|\d{12}"
+          pattern="\\\\+?\\\\d{1,4}[-.\\s]?\\\\(\\\\?\\\\d{1,3}\\\\)?[-.\\s]?\\\\d{1,4}[-.\\s]?\\\\d{1,4}[-.\\s]?\\\\d{1,9}" 
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
           value={number}
